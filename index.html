@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upright Smart Solution — Buy, Sell & Rent Properties in Karachi</title>
+  <link rel="icon" type="image/png" href="assets/upright-smart-solution-logo.png" />
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+  
+  <!-- Top Sticky Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-18">
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-8">
+          <a href="index.html" class="flex items-center gap-2.5 group">
+            <img
+              src="assets/upright-smart-solution-logo.png"
+              alt="Upright Smart Solution"
+              class="h-11 w-auto max-w-[72px] object-contain shrink-0"
+            />
+            <span class="brand-name text-[19px] sm:text-[20px] font-extrabold leading-none text-pink-500 whitespace-nowrap">
+              Upright <span>Smart Solution</span>
+            </span>
+          </a>
+
+          <!-- Primary Desktop Links -->
+          <nav class="hidden lg:flex items-center gap-6">
+            <a href="listings.html?purpose=buy" class="text-slate-700 hover:text-rose-600 font-medium text-sm transition-colors">Buy</a>
+            <a href="listings.html?purpose=rent" class="text-slate-700 hover:text-rose-600 font-medium text-sm transition-colors">Rent</a>
+            <a href="listings.html?purpose=projects" class="text-slate-700 hover:text-rose-600 font-medium text-sm transition-colors">New Projects</a>
+            <a href="index.html#karachi-area-guides" class="text-slate-700 hover:text-rose-600 font-medium text-sm transition-colors">Karachi Area Guides</a>
+            <a href="index.html#invest-karachi" class="text-slate-700 hover:text-rose-600 font-medium text-sm transition-colors">Invest</a>
+          </nav>
+        </div>
+
+        <!-- Right Action Controls -->
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="listings.html?saved=1"
+            title="Saved Karachi Properties"
+            class="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
+          >
+            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span>Saved</span>
+            <span class="saved-count-badge hidden bg-rose-600 text-white text-[11px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+          </a>
+
+          <button
+            type="button"
+            onclick="openModal('add-property-modal')"
+            class="inline-flex items-center gap-1.5 bg-rose-600 hover:bg-rose-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors cursor-pointer"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span>Add Property</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="openModal('auth-modal')"
+            class="inline-flex items-center gap-1.5 border border-slate-300 hover:border-slate-900 text-slate-800 text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors cursor-pointer"
+          >
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span>Login / Sign Up</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center gap-2 md:hidden">
+          <a href="listings.html?saved=1" class="relative p-2 text-slate-700">
+            <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span class="saved-count-badge hidden absolute -top-0.5 -right-0.5 bg-rose-600 text-white text-[10px] font-bold px-1.5 rounded-full">0</span>
+          </a>
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Toggle Menu"
+            class="p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-5 space-y-3">
+      <div class="flex flex-col space-y-2.5">
+        <a href="listings.html?purpose=buy" class="text-sm font-semibold text-slate-800 py-1">Buy in Karachi</a>
+        <a href="listings.html?purpose=rent" class="text-sm font-semibold text-slate-800 py-1">Rent in Karachi</a>
+        <a href="listings.html?purpose=projects" class="text-sm font-semibold text-slate-800 py-1">New Projects</a>
+        <a href="index.html#karachi-area-guides" class="text-sm font-semibold text-slate-800 py-1">Karachi Area Guides</a>
+        <a href="index.html#invest-karachi" class="text-sm font-semibold text-slate-800 py-1">Invest</a>
+      </div>
+      <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+        <button
+          type="button"
+          onclick="openModal('add-property-modal')"
+          class="bg-rose-600 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center"
+        >
+          + Add Property
+        </button>
+        <button
+          type="button"
+          onclick="openModal('auth-modal')"
+          class="border border-slate-300 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl text-center"
+        >
+          Login / Sign Up
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =====================================================================
+       HERO SECTION WITH TABBED KARACHI SEARCH BAR
+       ===================================================================== -->
+  <section class="hero-karachi-bg relative py-16 sm:py-24 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mx-auto text-center text-white mb-10">
+        <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xs border border-white/20 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-4">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+          Upright Smart Solution • Karachi Real Estate
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+          Move Smarter. Invest Better. Find the Right Property in <span class="text-rose-400">Karachi</span>
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-slate-200 max-w-2xl mx-auto">
+          Explore carefully selected homes, apartments, plots, commercial spaces, and projects across Karachi's leading neighbourhoods.
+        </p>
+      </div>
+
+      <!-- Tabbed Search Card (Graana Style) -->
+      <div class="max-w-5xl mx-auto">
+        <!-- Purpose Tabs -->
+        <div class="inline-flex bg-white/95 backdrop-blur-xs p-1.5 rounded-t-2xl shadow-sm gap-1">
+          <button
+            type="button"
+            data-purpose-tab="buy"
+            class="search-tab active px-6 py-2.5 rounded-xl text-sm font-bold cursor-pointer"
+          >
+            Buy
+          </button>
+          <button
+            type="button"
+            data-purpose-tab="rent"
+            class="search-tab px-6 py-2.5 rounded-xl text-sm font-bold text-slate-700 cursor-pointer"
+          >
+            Rent
+          </button>
+          <button
+            type="button"
+            data-purpose-tab="projects"
+            class="search-tab px-6 py-2.5 rounded-xl text-sm font-bold text-slate-700 cursor-pointer"
+          >
+            Projects
+          </button>
+        </div>
+
+        <!-- Search Filter Form -->
+        <form
+          id="hero-search-form"
+          class="bg-white rounded-b-2xl rounded-tr-2xl p-4 sm:p-5 search-card-shadow border border-slate-100"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 items-end">
+            <!-- Karachi Area / Society -->
+            <div class="lg:col-span-3">
+              <label for="hero-area" class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                Karachi Area / Society
+              </label>
+              <select
+                id="hero-area"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-rose-600"
+              >
+                <option value="all">All Karachi Areas</option>
+                <option value="DHA Karachi">DHA Karachi</option>
+                <option value="Clifton">Clifton</option>
+                <option value="Bahria Town Karachi">Bahria Town Karachi</option>
+                <option value="Gulshan-e-Iqbal">Gulshan-e-Iqbal</option>
+                <option value="PECHS">PECHS</option>
+                <option value="Scheme 33">Scheme 33</option>
+                <option value="North Nazimabad">North Nazimabad</option>
+                <option value="Malir Cantt">Malir Cantt</option>
+              </select>
+            </div>
+
+            <!-- Property Type -->
+            <div class="lg:col-span-3">
+              <label for="hero-type" class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                Property Type
+              </label>
+              <select
+                id="hero-type"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-rose-600"
+              >
+                <option value="all">All Property Types</option>
+                <option value="Bungalow / House">Bungalow / House</option>
+                <option value="Apartment / Flat">Apartment / Flat</option>
+                <option value="Plot">Plot</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+
+            <!-- Price Range (PKR) -->
+            <div class="lg:col-span-2">
+              <label for="hero-budget" class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                Max Price (PKR)
+              </label>
+              <select
+                id="hero-budget"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-rose-600"
+              >
+                <option value="all">Any Budget (PKR)</option>
+                <option value="30000000">Up to PKR 3 Crore</option>
+                <option value="75000000">Up to PKR 7.5 Crore</option>
+                <option value="100000000">Up to PKR 10 Crore</option>
+                <option value="200000000">Up to PKR 20 Crore</option>
+              </select>
+            </div>
+
+            <!-- Area Size (Sq. Yards / Marla / Kanal) -->
+            <div class="lg:col-span-2">
+              <label for="hero-size" class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                Area Size
+              </label>
+              <select
+                id="hero-size"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-rose-600"
+              >
+                <option value="all">Any Size (Sq. Yds)</option>
+                <option value="120 - 240 Sq. Yards">120 – 240 Sq. Yds (5–10 Marla)</option>
+                <option value="250 - 400 Sq. Yards">250 – 400 Sq. Yds (10–16 Marla)</option>
+                <option value="500 Sq. Yards">500 Sq. Yards (1 Kanal)</option>
+                <option value="1,000+ Sq. Yards">1,000+ Sq. Yards (2 Kanal)</option>
+              </select>
+            </div>
+
+            <!-- Red Search CTA -->
+            <div class="lg:col-span-2">
+              <button
+                type="submit"
+                class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Popular Karachi Filter Pills -->
+          <div class="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-2 text-xs">
+            <span class="font-semibold text-slate-400">Popular in Karachi:</span>
+            <a href="listings.html?area=DHA%20Karachi&type=Bungalow%20%2F%20House" class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 font-medium text-slate-700 transition-colors">
+              DHA Phase 8 Bungalows
+            </a>
+            <a href="listings.html?area=Clifton&type=Apartment%20%2F%20Flat" class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 font-medium text-slate-700 transition-colors">
+              Clifton Sea-Facing Flats
+            </a>
+            <a href="listings.html?area=Bahria%20Town%20Karachi" class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 font-medium text-slate-700 transition-colors">
+              Bahria Town Precinct 10A
+            </a>
+            <a href="listings.html?area=Scheme%2033" class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 font-medium text-slate-700 transition-colors">
+              Scheme 33 Leased Houses
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       EXPLORE CATEGORIES / QUICK CARDS
+       ===================================================================== -->
+  <section class="py-14 bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Browse by Category</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Explore Karachi Property Types
+          </h2>
+        </div>
+        <a href="listings.html" class="text-sm font-bold text-rose-600 hover:text-rose-700 inline-flex items-center gap-1">
+          View All Karachi Listings
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Category 1: Bungalows & Houses -->
+        <a
+          href="listings.html?type=Bungalow%20%2F%20House"
+          class="group p-6 rounded-2xl bg-[#F8F9FA] hover:bg-white border border-slate-200/80 hover:border-rose-200 hover:shadow-lg transition-all"
+        >
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors">
+            Bungalows & Houses
+          </h3>
+          <p class="text-xs text-slate-500 mt-1">120 to 2,000 Sq. Yds designer homes across DHA, PECHS & Malir Cantt.</p>
+          <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800">3,480+ Listings</span>
+            <span class="text-rose-600 text-xs font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Category 2: Apartments & Flats -->
+        <a
+          href="listings.html?type=Apartment%20%2F%20Flat"
+          class="group p-6 rounded-2xl bg-[#F8F9FA] hover:bg-white border border-slate-200/80 hover:border-rose-200 hover:shadow-lg transition-all"
+        >
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors">
+            Apartments & Flats
+          </h3>
+          <p class="text-xs text-slate-500 mt-1">High-rise Clifton seafront residences & Gulshan-e-Iqbal family flats.</p>
+          <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800">4,120+ Listings</span>
+            <span class="text-rose-600 text-xs font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Category 3: Residential Plots -->
+        <a
+          href="listings.html?type=Plot"
+          class="group p-6 rounded-2xl bg-[#F8F9FA] hover:bg-white border border-slate-200/80 hover:border-rose-200 hover:shadow-lg transition-all"
+        >
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors">
+            Residential Plots
+          </h3>
+          <p class="text-xs text-slate-500 mt-1">KDA & DHA leased plots in Bahria Town, Scheme 33 & DHA Phase 8.</p>
+          <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800">2,890+ Listings</span>
+            <span class="text-rose-600 text-xs font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Category 4: Commercial Spaces -->
+        <a
+          href="listings.html?type=Commercial"
+          class="group p-6 rounded-2xl bg-[#F8F9FA] hover:bg-white border border-slate-200/80 hover:border-rose-200 hover:shadow-lg transition-all"
+        >
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors">
+            Commercial Spaces
+          </h3>
+          <p class="text-xs text-slate-500 mt-1">Corporate offices & retail showrooms on Shahrah-e-Faisal, Tariq Rd & Zamzama.</p>
+          <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800">1,140+ Listings</span>
+            <span class="text-rose-600 text-xs font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FEATURED KARACHI PROPERTIES GRID
+       ===================================================================== -->
+  <section class="py-16 bg-[#F8F9FA]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Handpicked & Verified</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Featured Properties in Karachi
+          </h2>
+          <p class="text-sm text-slate-500 mt-1">
+            Physically verified title documents and direct agent WhatsApp connectivity.
+          </p>
+        </div>
+        <a
+          href="listings.html"
+          class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-900 text-slate-900 hover:text-white border border-slate-300 hover:border-slate-900 text-sm font-bold px-5 py-2.5 rounded-xl transition-colors"
+        >
+          Browse All 12 Karachi Listings
+        </a>
+      </div>
+
+      <!-- Populated by js/app.js -->
+      <div id="featured-properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       POPULAR KARACHI AREA GUIDES
+       ===================================================================== -->
+  <section id="karachi-area-guides" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Market Intelligence</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Popular Karachi Area Guides
+          </h2>
+          <p class="text-sm text-slate-500 mt-1">
+            Explore live inventory counts and average price per Sq. Yard trends across Karachi neighborhoods.
+          </p>
+        </div>
+      </div>
+
+      <!-- Populated by js/app.js -->
+      <div id="area-guides-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       INVEST IN KARACHI / TRUST BANNER
+       ===================================================================== -->
+  <section id="invest-karachi" class="py-14 bg-[#F8F9FA] border-t border-slate-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <span class="inline-block bg-rose-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+            Graana-Style Due Diligence
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+            Invest Safely in Karachi Real Estate with Verified Title & SBCA Checks
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+            Every project and residential listing tagged "Verified" undergoes KDA, DHA, Cantonment Board, or SBCA NOC screening before going live—protecting local and overseas Pakistani investors.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="listings.html?purpose=projects"
+              class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-colors"
+            >
+              Explore Approved Projects
+            </a>
+            <a
+              href="property-details.html?id=khi-101"
+              class="bg-white/10 hover:bg-white/20 text-white font-bold text-sm px-6 py-3.5 rounded-xl border border-white/15 transition-colors"
+            >
+              Try PKR Mortgage Calculator
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <p class="text-2xl sm:text-3xl font-extrabold text-rose-400">11,600+</p>
+            <p class="text-xs text-slate-300 mt-1">Active Karachi Listings</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</p>
+            <p class="text-xs text-slate-300 mt-1">Karachi-Exclusive Focus</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <p class="text-2xl sm:text-3xl font-extrabold text-white">45+</p>
+            <p class="text-xs text-slate-300 mt-1">Karachi Societies Covered</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <p class="text-2xl sm:text-3xl font-extrabold text-amber-400">24/7</p>
+            <p class="text-xs text-slate-300 mt-1">Direct Agent WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-300 pt-14 pb-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <img src="assets/upright-smart-solution-logo.png" alt="Upright Smart Solution" class="h-11 w-auto max-w-[72px] object-contain shrink-0" />
+            <span class="text-lg font-extrabold text-white">Upright <span class="text-rose-500">Smart Solution</span></span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Karachi's dedicated real estate marketplace for verified bungalows, sea-facing apartments, residential plots, and commercial spaces across DHA, Clifton, Bahria Town, PECHS, and beyond.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Top Karachi Societies</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="listings.html?area=DHA%20Karachi" class="hover:text-rose-400 transition-colors">DHA Defence Karachi (Phase 1–8)</a></li>
+            <li><a href="listings.html?area=Clifton" class="hover:text-rose-400 transition-colors">Clifton Blocks 1–9</a></li>
+            <li><a href="listings.html?area=Bahria%20Town%20Karachi" class="hover:text-rose-400 transition-colors">Bahria Town Karachi</a></li>
+            <li><a href="listings.html?area=PECHS" class="hover:text-rose-400 transition-colors">PECHS & Shahrah-e-Faisal</a></li>
+            <li><a href="listings.html?area=Scheme%2033" class="hover:text-rose-400 transition-colors">Scheme 33 & Gulzar-e-Hijri</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Property Categories</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="listings.html?type=Bungalow%20%2F%20House" class="hover:text-rose-400 transition-colors">Bungalows & Houses in Karachi</a></li>
+            <li><a href="listings.html?type=Apartment%20%2F%20Flat" class="hover:text-rose-400 transition-colors">Luxury Apartments & Flats</a></li>
+            <li><a href="listings.html?type=Plot" class="hover:text-rose-400 transition-colors">Leased Residential Plots</a></li>
+            <li><a href="listings.html?type=Commercial" class="hover:text-rose-400 transition-colors">Commercial Offices & Showrooms</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Karachi Head Office</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Suite 402, Sky Tower, Shahrah-e-Faisal, PECHS Block 6, Karachi, Sindh, Pakistan.
+          </p>
+          <p class="text-sm text-white font-semibold mt-3">UAN: +92 21 111 555 888</p>
+          <p class="text-xs text-slate-400 mt-1">support@uprightsmartsolution.com</p>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Upright Smart Solution — Karachi Real Estate.</p>
+        <div class="flex items-center gap-5">
+          <a href="#" class="hover:text-slate-300">SBCA Verification Policy</a>
+          <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-300">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login / Sign Up Modal -->
+  <div id="auth-modal" class="hidden fixed inset-0 z-50 modal-backdrop bg-slate-900/60 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative">
+      <button
+        type="button"
+        onclick="closeModal('auth-modal')"
+        aria-label="Close modal"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-500"
+      >
+        &times;
+      </button>
+      <div class="flex items-center gap-2 mb-2">
+        <img src="assets/upright-smart-solution-logo.png" alt="Upright Smart Solution" class="h-9 w-auto object-contain" />
+        <span class="font-extrabold text-slate-900">Upright Smart Solution</span>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-900">Sign In or Create Account</h3>
+      <p class="text-xs text-slate-500 mt-1">Save shortlisted Karachi homes, track price trends, and contact verified agents.</p>
+
+      <form id="auth-modal-form" class="mt-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+          <input type="text" required placeholder="e.g. Bilal Ahmed" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Pakistani Mobile Number</label>
+          <input type="tel" required placeholder="+92 300 1234567" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
+          <input type="email" required placeholder="name@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+        <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm py-3 rounded-xl transition-colors">
+          Continue to Upright Smart Solution
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Property Modal -->
+  <div id="add-property-modal" class="hidden fixed inset-0 z-50 modal-backdrop bg-slate-900/60 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+      <button
+        type="button"
+        onclick="closeModal('add-property-modal')"
+        aria-label="Close modal"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-500"
+      >
+        &times;
+      </button>
+      <span class="inline-block text-[11px] font-bold uppercase tracking-wider bg-rose-50 text-rose-600 px-2.5 py-1 rounded-md mb-2">
+        Free Listing in Karachi
+      </span>
+      <h3 class="text-xl font-extrabold text-slate-900">List Your Karachi Property</h3>
+      <p class="text-xs text-slate-500 mt-1">Reach thousands of verified buyers and tenants across Karachi.</p>
+
+      <form id="add-property-form" class="mt-4 space-y-3.5">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Purpose</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600">
+              <option>Sell</option>
+              <option>Rent Out</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Property Type</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600">
+              <option>Bungalow / House</option>
+              <option>Apartment / Flat</option>
+              <option>Plot</option>
+              <option>Commercial</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Karachi Area / Society</label>
+          <select class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600">
+            <option>DHA Karachi</option>
+            <option>Clifton</option>
+            <option>Bahria Town Karachi</option>
+            <option>Gulshan-e-Iqbal</option>
+            <option>PECHS</option>
+            <option>Scheme 33</option>
+            <option>North Nazimabad</option>
+            <option>Malir Cantt</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Demand Price (PKR)</label>
+            <input type="text" required placeholder="e.g. 4.5 Crore" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Area Size</label>
+            <input type="text" required placeholder="e.g. 240 Sq. Yards" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Owner / Agent WhatsApp Number</label>
+          <input type="tel" required placeholder="+92 300 0000000" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+
+        <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm py-3 rounded-xl transition-colors">
+          Submit Property for Verification
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="js/app.js"></script>
+</body>
+</html>

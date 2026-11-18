@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Upright Smart Solution - Karachi Real Estate Marketplace Styles
+   ========================================================================== */
+
+:root {
+  --color-primary: #E11D48;
+  --color-primary-dark: #BE123C;
+  --color-primary-light: #FFE4E6;
+  --color-bg-white: #FFFFFF;
+  --color-bg-soft: #F8F9FA;
+  --color-text-dark: #1E293B;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-white);
+}
+
+.brand-name {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Hero Background Overlay & Pattern */
+.hero-karachi-bg {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(15, 23, 42, 0.72),
+      rgba(15, 23, 42, 0.58)
+    ),
+    url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Search Box Shadow & Glass Accent */
+.search-card-shadow {
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18),
+              0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* Active Search Tab Styling */
+.search-tab {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.search-tab.active {
+  background-color: #E11D48;
+  color: #FFFFFF;
+}
+
+.search-tab:not(.active):hover {
+  background-color: #F1F5F9;
+  color: #1E293B;
+}
+
+/* Property Card Hover & Image Zoom */
+.property-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.12);
+  border-color: #CBD5E1;
+}
+
+.property-card .property-img {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.property-card:hover .property-img {
+  transform: scale(1.05);
+}
+
+/* Heart Favorite Button Animation */
+.fav-btn {
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.fav-btn:active {
+  transform: scale(0.85);
+}
+
+.fav-btn.is-favorite svg {
+  fill: #E11D48;
+  color: #E11D48;
+}
+
+/* Area Guide Card Gradient Overlay */
+.area-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(15, 23, 42, 0.45) 55%,
+    rgba(15, 23, 42, 0.12) 100%
+  );
+}
+
+/* Custom Range Input Slider for PKR Mortgage Calculator */
+input[type="range"].pkr-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #E2E8F0;
+  outline: none;
+}
+
+input[type="range"].pkr-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #E11D48;
+  cursor: pointer;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.45);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].pkr-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+input[type="range"].pkr-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #E11D48;
+  cursor: pointer;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.45);
+}
+
+/* Modal Backdrop Transition */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Toast Notification Animation */
+@keyframes slideUpToast {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast-enter {
+  animation: slideUpToast 0.25s ease-out forwards;
+}
